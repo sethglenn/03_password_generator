@@ -36,42 +36,35 @@ generateBtn.addEventListener("click", writePassword);
        
     var charLowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var charUppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    var charSpecialChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+    var charSpecialChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/","=", "?", "@", "^",];
     var charNumeric = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var finalArray = [];
   
+    // if (confirmLowercase == true && confirmUppercase == true && confirmSpecialChar == true && confirmNumeric == true)
 
-    var passwordCharacters = []
     // Empty string to be filled from arrays.
-    var randomPassword = ""
-      if (confirmLowercase) 
-        for (var i = 0; i <= confirmLength; i++) {
-          randomPassword = randomPassword + charLowercase[Math.floor(Math.random() * charLowercase.length)];
-            console.log(randomPassword);
+    
+    if (confirmLowercase) {
+     finalArray.push(...charLowercase);
     }
-      if (confirmUppercase) 
-        for (var i = 0; i <= confirmLength; i++) {
-          randomPassword = randomPassword + charUppercase[Math.floor(Math.random() * charUppercase.length)];
-            console.log(randomPassword);
+      if (confirmUppercase) {
+      finalArray.push(...charUppercase);
     }
-      if (confirmSpecialChar) 
-        for (var i = 0; i <= confirmLength; i++) {
-          randomPassword = randomPassword + charSpecialChar[Math.floor(Math.random() * charSpecialChar.length)];
-            console.log(randomPassword);
+      if (confirmSpecialChar) {
+      finalArray.push(...charSpecialChar);
+      }
+      if (confirmNumeric) {
+      finalArray.push(...charNumeric);
     }
-      if (confirmNumeric) 
-        for (var i = 0; i <= confirmLength; i++) {
-          randomPassword = randomPassword + charNumeric[Math.floor(Math.random() * charNumeric.length)];
-            console.log(randomPassword);
+    var randomPassword = [];
+    for (let i = 0; i <= confirmLength; i++){
+      var randomNum = Math.floor(Math.random()* finalArray.length);
+        randomPassword.push(finalArray[randomNum]);
     }
-      // This needs work to consolodate all random generations.
-      for (var i = 0; i <= confirmLength; i++) {
-        randomPassword[Math.floor(Math.random())];
-          console.log(randomPassword);
-    }
+    
+                  
 
-
-    return randomPassword;
+    return randomPassword.join("");
   }
-
 
     
